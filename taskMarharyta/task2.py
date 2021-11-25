@@ -1,4 +1,4 @@
-'''
+"""
 Task2:
  Implement a function `get_pairs(lst: List) -> List[Tuple]`
  which returns a list of tuples containing pairs of elements.
@@ -12,4 +12,29 @@ Example:
  [('need', 'to'), ('to', 'sleep'), ('sleep', 'more')]
  get_pairs([1])
  None
-'''
+"""
+
+
+def get_pairs(inp_list):
+
+    outp_list = []
+
+    if len(inp_list) < 2:
+        return 'None'
+
+    prev_x = inp_list[0]
+    count = 0
+    for x in inp_list:
+        if count > 0:
+            outp_list.append((prev_x, x))
+            prev_x = x
+        count = count + 1
+
+    return outp_list
+
+
+print(get_pairs([1, 2, 3, 4, 5]))
+print(get_pairs(['need', 'to', 'sleep', 'more']))
+print(get_pairs([1]))
+print(get_pairs([]))
+print(get_pairs([1, '2']))
