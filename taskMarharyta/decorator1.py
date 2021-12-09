@@ -15,22 +15,20 @@ import functools
 
 
 def cacher_func(function):
-    cach_tuple = {}
+    cach = {}
     @functools.wraps(function)
     def wrapper(*args, **kwargs):
-        if args in cach_tuple:
-            print('cashed')
-            return cach_tuple[args]
-        else:
-            cach_tuple[args] = function(*args, **kwargs)
-            return cach_tuple[args]
-
+        flag_cached = 'cached'
+        if args not in cach:
+            cach[args] = function(*args, **kwargs)
+            flag_cached = 'calculated'
+        return cach[args], flag_cached
     return wrapper
 
 @cacher_func
 def sum_of_numbers(a, b):
-    c = a + b
-    return c
+    return a + b
+
 
 print(sum_of_numbers(5,4))
 print(sum_of_numbers(5,4))
