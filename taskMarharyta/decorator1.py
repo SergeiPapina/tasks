@@ -30,9 +30,9 @@ def sum_of_numbers(a, b):
     return a + b
 
 
-print(sum_of_numbers(5,4))
-print(sum_of_numbers(5,4))
-print(sum_of_numbers(2,4))
-print(sum_of_numbers(3,4))
-print(sum_of_numbers(5,4))
-print(sum_of_numbers(2,4))
+print(sum_of_numbers(5, 4))
+print(sum_of_numbers(5, 4))
+print(sum_of_numbers(2, 4))
+print(sum_of_numbers(3, 4))
+print(sum_of_numbers(5, 4))
+print(sum_of_numbers(2, 4))
