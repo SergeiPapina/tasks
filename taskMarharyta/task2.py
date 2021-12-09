@@ -16,7 +16,7 @@ Example:
 
 
 def get_pairs(inp_list):
-
+    inp_list.append('rt')
     outp_list = []
 
     if len(inp_list) < 2:
@@ -33,8 +33,6 @@ def get_pairs(inp_list):
     return outp_list
 
 
-print(get_pairs([1, 2, 3, 4, 5]))
-print(get_pairs(['need', 'to', 'sleep', 'more']))
-print(get_pairs([1]))
-print(get_pairs([]))
-print(get_pairs([1, '2']))
+
+print(get_pairs())
+print(get_pairs())

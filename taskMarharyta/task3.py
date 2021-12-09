@@ -10,7 +10,7 @@ Example:
  'n': 1, 'g': 1, 'a': 1, 'm': 1,
  'p': 1, 'l': 1, 'e': 1}
 """
-
+import sys
 
 def count_letters(inp_str=''):
 
@@ -29,3 +29,4 @@ def count_letters(inp_str=''):
 print(count_letters("stringsample"))
 print(count_letters())
 print(count_letters("Happy new year 2022!!!"))
+print(sys.path)
