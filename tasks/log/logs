@@ -1,0 +1,163 @@
+06-Jan-22 15:45:15 [INFO] Finished in 0.96 secs: parsing https://careers.godeltech.com/en/careers/job/solution-architect/.
+06-Jan-22 15:45:16 [INFO] Started: saving vacancy source page into db
+06-Jan-22 15:45:16 [INFO] Finished: saving source page into db.
+06-Jan-22 15:45:16 [INFO] Finished in 0.91 secs: parsing https://careers.godeltech.com/en/careers/job/middle-senior-java-developer-8/.
+06-Jan-22 15:45:16 [INFO] Started: saving vacancy source page into db
+06-Jan-22 15:45:42 [ERROR] Failed: saving source page into db:
+Traceback (most recent call last):
+  File "C:\Work\lm-tool\venv\lib\site-packages\urllib3\connection.py", line 174, in _new_conn
+    conn = connection.create_connection(
+  File "C:\Work\lm-tool\venv\lib\site-packages\urllib3\util\connection.py", line 73, in create_connection
+    for res in socket.getaddrinfo(host, port, family, socket.SOCK_STREAM):
+  File "C:\Program Files\Python38\lib\socket.py", line 918, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+socket.gaierror: [Errno 11001] getaddrinfo failed
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Work\lm-tool\venv\lib\site-packages\botocore\httpsession.py", line 323, in send
+    urllib_response = conn.urlopen(
+  File "C:\Work\lm-tool\venv\lib\site-packages\urllib3\connectionpool.py", line 755, in urlopen
+    retries = retries.increment(
+  File "C:\Work\lm-tool\venv\lib\site-packages\urllib3\util\retry.py", line 507, in increment
+    raise six.reraise(type(error), error, _stacktrace)
+  File "C:\Work\lm-tool\venv\lib\site-packages\urllib3\packages\six.py", line 770, in reraise
+    raise value
+  File "C:\Work\lm-tool\venv\lib\site-packages\urllib3\connectionpool.py", line 699, in urlopen
+    httplib_response = self._make_request(
+  File "C:\Work\lm-tool\venv\lib\site-packages\urllib3\connectionpool.py", line 382, in _make_request
+    self._validate_conn(conn)
+  File "C:\Work\lm-tool\venv\lib\site-packages\urllib3\connectionpool.py", line 1010, in _validate_conn
+    conn.connect()
+  File "C:\Work\lm-tool\venv\lib\site-packages\urllib3\connection.py", line 358, in connect
+    conn = self._new_conn()
+  File "C:\Work\lm-tool\venv\lib\site-packages\urllib3\connection.py", line 186, in _new_conn
+    raise NewConnectionError(
+urllib3.exceptions.NewConnectionError: <botocore.awsrequest.AWSHTTPSConnection object at 0x0000014636D7A430>: Failed to establish a new connection: [Errno 11001] getaddrinfo failed
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Work\lm-tool\src\managers\vacancy.py", line 159, in _save_source_page
+    self._bucket.save_src_file(buffer, url)
+  File "C:\Work\lm-tool\src\integrations\bucket.py", line 142, in save_src_file
+    self._upload_fileobj(file, folder=folder, file_name=f"{url}.html")
+  File "C:\Work\lm-tool\src\integrations\bucket.py", line 72, in _upload_fileobj
+    self._bucket.upload_fileobj(obj, posixpath.join(folder, file_name))
+  File "C:\Work\lm-tool\venv\lib\site-packages\boto3\s3\inject.py", line 579, in bucket_upload_fileobj
+    return self.meta.client.upload_fileobj(
+  File "C:\Work\lm-tool\venv\lib\site-packages\boto3\s3\inject.py", line 539, in upload_fileobj
+    return future.result()
+  File "C:\Work\lm-tool\venv\lib\site-packages\s3transfer\futures.py", line 106, in result
+    return self._coordinator.result()
+  File "C:\Work\lm-tool\venv\lib\site-packages\s3transfer\futures.py", line 265, in result
+    raise self._exception
+  File "C:\Work\lm-tool\venv\lib\site-packages\s3transfer\tasks.py", line 126, in __call__
+    return self._execute_main(kwargs)
+  File "C:\Work\lm-tool\venv\lib\site-packages\s3transfer\tasks.py", line 150, in _execute_main
+    return_value = self._main(**kwargs)
+  File "C:\Work\lm-tool\venv\lib\site-packages\s3transfer\upload.py", line 694, in _main
+    client.put_object(Bucket=bucket, Key=key, Body=body, **extra_args)
+  File "C:\Work\lm-tool\venv\lib\site-packages\botocore\client.py", line 386, in _api_call
+    return self._make_api_call(operation_name, kwargs)
+  File "C:\Work\lm-tool\venv\lib\site-packages\botocore\client.py", line 691, in _make_api_call
+    http, parsed_response = self._make_request(
+  File "C:\Work\lm-tool\venv\lib\site-packages\botocore\client.py", line 711, in _make_request
+    return self._endpoint.make_request(operation_model, request_dict)
+  File "C:\Work\lm-tool\venv\lib\site-packages\botocore\endpoint.py", line 102, in make_request
+    return self._send_request(request_dict, operation_model)
+  File "C:\Work\lm-tool\venv\lib\site-packages\botocore\endpoint.py", line 136, in _send_request
+    while self._needs_retry(attempts, operation_model, request_dict,
+  File "C:\Work\lm-tool\venv\lib\site-packages\botocore\endpoint.py", line 253, in _needs_retry
+    responses = self._event_emitter.emit(
+  File "C:\Work\lm-tool\venv\lib\site-packages\botocore\hooks.py", line 356, in emit
+    return self._emitter.emit(aliased_event_name, **kwargs)
+  File "C:\Work\lm-tool\venv\lib\site-packages\botocore\hooks.py", line 228, in emit
+    return self._emit(event_name, kwargs)
+  File "C:\Work\lm-tool\venv\lib\site-packages\botocore\hooks.py", line 211, in _emit
+    response = handler(**kwargs)
+  File "C:\Work\lm-tool\venv\lib\site-packages\botocore\retryhandler.py", line 183, in __call__
+    if self._checker(attempts, response, caught_exception):
+  File "C:\Work\lm-tool\venv\lib\site-packages\botocore\retryhandler.py", line 250, in __call__
+    should_retry = self._should_retry(attempt_number, response,
+  File "C:\Work\lm-tool\venv\lib\site-packages\botocore\retryhandler.py", line 277, in _should_retry
+    return self._checker(attempt_number, response, caught_exception)
+  File "C:\Work\lm-tool\venv\lib\site-packages\botocore\retryhandler.py", line 316, in __call__
+    checker_response = checker(attempt_number, response,
+  File "C:\Work\lm-tool\venv\lib\site-packages\botocore\retryhandler.py", line 222, in __call__
+    return self._check_caught_exception(
+  File "C:\Work\lm-tool\venv\lib\site-packages\botocore\retryhandler.py", line 359, in _check_caught_exception
+    raise caught_exception
+  File "C:\Work\lm-tool\venv\lib\site-packages\botocore\endpoint.py", line 200, in _do_get_response
+    http_response = self._send(request)
+  File "C:\Work\lm-tool\venv\lib\site-packages\botocore\endpoint.py", line 269, in _send
+    return self.http_session.send(request)
+  File "C:\Work\lm-tool\venv\lib\site-packages\botocore\httpsession.py", line 352, in send
+    raise EndpointConnectionError(endpoint_url=request.url, error=e)
+botocore.exceptions.EndpointConnectionError: Could not connect to the endpoint URL: "https://lm-tool.s3.eu-central-1.amazonaws.com/src/1641472537731727500/https%3A__careers.godeltech.com_en_careers_job_kotlin-engineer_.html"
+06-Jan-22 15:45:42 [INFO] Finished in 26.85 secs: parsing https://careers.godeltech.com/en/careers/job/kotlin-engineer/.
+06-Jan-22 15:45:42 [ERROR] Failed: parsing https://careers.godeltech.com/en/careers/job/head-of-people-and-culture/:
+Traceback (most recent call last):
+  File "C:\Work\lm-tool\src\managers\vacancy.py", line 89, in execute
+    driver.get(link)
+  File "C:\Work\lm-tool\venv\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 333, in get
+    self.execute(Command.GET, {'url': url})
+  File "C:\Work\lm-tool\venv\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 321, in execute
+    self.error_handler.check_response(response)
+  File "C:\Work\lm-tool\venv\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 242, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.WebDriverException: Message: unknown error: net::ERR_NAME_NOT_RESOLVED
+  (Session info: headless chrome=96.0.4664.110)
+
+06-Jan-22 15:45:42 [ERROR] Failed: parsing https://careers.godeltech.com/en/careers/job/lead-javascript-developer/:
+Traceback (most recent call last):
+  File "C:\Work\lm-tool\src\managers\vacancy.py", line 89, in execute
+    driver.get(link)
+  File "C:\Work\lm-tool\venv\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 333, in get
+    self.execute(Command.GET, {'url': url})
+  File "C:\Work\lm-tool\venv\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 321, in execute
+    self.error_handler.check_response(response)
+  File "C:\Work\lm-tool\venv\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 242, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.WebDriverException: Message: unknown error: net::ERR_NAME_NOT_RESOLVED
+  (Session info: headless chrome=96.0.4664.110)
+
+06-Jan-22 15:45:42 [ERROR] Failed: parsing https://careers.godeltech.com/en/careers/job/senior-ios-developer/:
+Traceback (most recent call last):
+  File "C:\Work\lm-tool\src\managers\vacancy.py", line 89, in execute
+    driver.get(link)
+  File "C:\Work\lm-tool\venv\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 333, in get
+    self.execute(Command.GET, {'url': url})
+  File "C:\Work\lm-tool\venv\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 321, in execute
+    self.error_handler.check_response(response)
+  File "C:\Work\lm-tool\venv\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 242, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.WebDriverException: Message: unknown error: net::ERR_NAME_NOT_RESOLVED
+  (Session info: headless chrome=96.0.4664.110)
+
+06-Jan-22 15:45:42 [ERROR] Failed: parsing https://careers.godeltech.com/en/careers/job/lead-big-data-engineer-aws/:
+Traceback (most recent call last):
+  File "C:\Work\lm-tool\src\managers\vacancy.py", line 89, in execute
+    driver.get(link)
+  File "C:\Work\lm-tool\venv\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 333, in get
+    self.execute(Command.GET, {'url': url})
+  File "C:\Work\lm-tool\venv\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 321, in execute
+    self.error_handler.check_response(response)
+  File "C:\Work\lm-tool\venv\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 242, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.WebDriverException: Message: unknown error: net::ERR_NAME_NOT_RESOLVED
+  (Session info: headless chrome=96.0.4664.110)
+
+06-Jan-22 15:45:42 [ERROR] Failed: parsing https://careers.godeltech.com/en/careers/job/lead-architect/:
+Traceback (most recent call last):
+  File "C:\Work\lm-tool\src\managers\vacancy.py", line 89, in execute
+    driver.get(link)
+  File "C:\Work\lm-tool\venv\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 333, in get
+    self.execute(Command.GET, {'url': url})
+  File "C:\Work\lm-tool\venv\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 321, in execute
+    self.error_handler.check_response(response)
+  File "C:\Work\lm-tool\venv\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 242, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.WebDriverException: Message: unknown error: net::ERR_NAME_NOT_RESOLVED
+  (Session info: headless chrome=96.0.4664.110)
